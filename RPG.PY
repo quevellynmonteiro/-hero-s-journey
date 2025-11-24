@@ -1,4 +1,3 @@
-"""
 RPG: Reino das Sombras Místicas
 Arquivo único: rpg_sombras_misticas.py
 Versão didática que demonstra conceitos de POO em Python (Encapsulamento, Herança,
@@ -7,15 +6,13 @@ Polimorfismo, Abstração, Composição, Factory Methods, Métodos Estáticos).
 Execute:
     python rpg_sombras_misticas.py
 
-Créditos: versão adaptada para Evellyn (Invocadora Estelar).
-"""
 
 import random
 from abc import ABC, abstractmethod
 from typing import List, Optional
 
 
-# ----------------------------- Utilitários -----------------------------
+
 class Dado:
     @staticmethod
     def rolar(lados: int = 6) -> int:
@@ -26,7 +23,7 @@ class Dado:
         return Dado.rolar(lados) + modificador
 
 
-# ----------------------------- Itens ---------------------------------
+
 class Arma:
     def __init__(self, nome: str, poder: int):
         self.nome = nome
@@ -45,7 +42,7 @@ class Pocao:
         return f"Pocao(nome={self.nome}, cura={self.cura})"
 
 
-# ----------------------------- Inventário -----------------------------
+
 class Inventario:
     def __init__(self):
         self.itens: List[object] = []
@@ -78,7 +75,7 @@ class Inventario:
         return False
 
 
-# ----------------------------- Habilidades ---------------------------
+
 class Habilidade(ABC):
     @abstractmethod
     def usar(self, usuario, alvo):
@@ -116,7 +113,7 @@ class FlechaEterea(Habilidade):
         print(f"{usuario.nome} atira Flecha Etérea! ({base}+{arma}+d6:{rolagem}) -> {dano} de dano em {alvo.nome}.")
 
 
-# ----------------------------- Personagem ----------------------------
+
 class Personagem:
     def __init__(self, nome: str, vida_maxima: int, atributo_principal: int):
         self.nome = nome
@@ -185,7 +182,7 @@ class Personagem:
         self.status[nome_status] = {'turns': turns, 'dano': dano}
 
 
-# ----------------------------- Classes Jogáveis ----------------------
+
 class Invocadora(Personagem):
     # equivalente ao Mago/Invocadora: d8
     def poder_base(self) -> int:
@@ -228,7 +225,7 @@ class ArqueiraFantasma(Personagem):
         print(f"{self.nome} dispara Flecha Etérea! ({base}+{arma}+d6:{rolagem}) -> {dano} de dano.")
 
 
-# ----------------------------- Monstros -------------------------------
+
 class Criatura:
     def __init__(self, nome: str, vida: int, dano_base: int, chance_critico: int = 0):
         self.nome = nome
@@ -280,7 +277,7 @@ class Criatura:
         return cls("Eremita do Abismo", vida=120, dano_base=25, chance_critico=35)
 
 
-# ----------------------------- Sistema de Batalha ---------------------
+
 class Batalha:
     def __init__(self, lado_a, lado_b):
         # lados podem ser um único personagem/monstro ou lista
@@ -370,7 +367,7 @@ class Batalha:
             print(f"  - {p.nome} (Vida restante: {p.vida})")
 
 
-# ----------------------------- Demo / Main ---------------------------
+
 if __name__ == "__main__":
     # Criando heroínas
     evellyn = Invocadora("Evellyn", 110, 38)

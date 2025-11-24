@@ -118,6 +118,7 @@ class Dado:
 
 # 🏗️ Estrutura do Código
 
+
 📦 Sistema RPG
 ├── 🎲 Itens
 │   ├── Arma
